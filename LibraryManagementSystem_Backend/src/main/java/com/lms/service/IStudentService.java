@@ -1,0 +1,18 @@
+package com.lms.service;
+
+import java.util.List;
+
+import com.lms.bean.Book;
+import com.lms.bean.BookInfo;
+import com.lms.bean.Student;
+
+public interface IStudentService {
+	String registerStudent(Student student);
+	Student checkLoginDetails(String studentId, String password);
+	List<Book> getAllBooks();
+	Boolean borrowBook(String bookId, String studentId);
+	List<BookInfo> returnBook(Integer issueId, String studentId);
+	List<BookInfo> getCart(String studentId);
+	List<BookInfo> getCard(String studentId);
+	Integer getTotalFine(String studentId);
+}

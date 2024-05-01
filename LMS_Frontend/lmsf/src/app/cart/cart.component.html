@@ -1,0 +1,20 @@
+<app-student-head></app-student-head>
+<div class="container">
+    <div>
+        <div class="card" *ngFor="let bookInfo of bookInfos ">
+            <img src="{{bookInfo.bookUrl}}" class="card" alt="Unable to load" height="200px" width="200px"> <br><br>
+            <b><i style="color:#fa07e6">Id:</i></b> {{bookInfo.bookId}} <br>
+            <div class="details">
+                <b><i style="color:#fa07e6">Name:</i></b> {{bookInfo.bookName}} <br>
+                <b><i style="color:#fa07e6">Book Author:</i></b> {{bookInfo.bookAuthor}} <br>
+                <b><i style="color:#fa07e6">Rack Number:</i></b> {{bookInfo.rackNumber}} <br>
+                <b><i style="color:#fa07e6">Book Status:</i></b> {{bookInfo.status}} <br>
+                <br>
+            </div>
+        </div>
+        <div>
+            <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                {{message}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<body style="background-image: url(assets/images/1.jpg);
+background-repeat:no-repeat;background-size:cover;">
+    <br><br><br><br><br><br><br><br>
+    <table align="center" style="color: bisque">
+        <div class="form-group" >
+          
+            <h1>  <i class="fas fa-unlock-alt"></i> &nbsp;Login!</h1>
+            <br>
+            <form #userForm='ngForm' (ngSubmit)="onSubmit(userForm.value)">
+                <tr>
+                    <td>
+                        <div class="form-group" >
+                            <i class="far fa-user fa-2x"></i> &nbsp; <b style="font-size: large;">  User Name</b>
+                            <input required type="text" size="35" #nameRef='ngModel' name="name"
+                                placeholder="Enter Student Id " class="form-control" ngModel>
+                            <div *ngIf='nameRef.errors && nameRef.touched' class="alert alert-danger">
+                                <div [hidden]='!nameRef.errors.required'>
+                                    please enter username
+                                </div>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <i class="fas fa-user-secret fa-2x"></i> &nbsp; <b style="font-size: large;"> Password</b>
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            <input type="password" [(ngModel)]="userForm.password" name="password"
+                                placeholder="Password" class="form-control" required #password="ngModel"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                            <div *ngIf="password.invalid && (userForm.submitted || password.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="password.errors.required"> Password is required. </div>
+                                <div *ngIf="password.errors.pattern"> Must contain at least one number and one uppercase
+                                    and
+                                    lowercase letter, and at least 8 or more characters.</div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <input type="radio" name="role" ngModel value="admin" required><b style="font-size: medium;"> Admin </b>
+                                <input type="radio" name="role" ngModel value="student" required><b style="font-size: medium;"> Student </b>
+                                <br>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <button class="btn btn-outline-primary" type="submit" [disabled]='userForm.invalid'
+                    style="color: black">Login</button>&nbsp;&nbsp;&nbsp;
+            </form>
+            <br>
+            <div>
+                <p
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                    {{message}}</p>
+            </div>
+        </div>
+    </table>
+    <table align="center">
+    <a ng-hreg="register" (click)="register()" style = "color:bisque"data-toggle="tooltip" title="For Student Registration"> New User? Click Here</a>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</table>
+</body>

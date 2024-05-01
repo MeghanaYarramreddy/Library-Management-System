@@ -1,0 +1,19 @@
+<app-admin-head></app-admin-head>
+<div style="background-image: url(assets/images/1.jpg);
+background-repeat:no-repeat;background-size:cover; padding-bottom: 500px;" >
+<br>
+<br>
+<br>
+<br>
+
+    <div align="center">
+        <label class="btn btn-default">
+            <input type="file" (change)="selectFile($event)">
+        </label>
+        
+        <button class="btn btn-primary" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+</div>

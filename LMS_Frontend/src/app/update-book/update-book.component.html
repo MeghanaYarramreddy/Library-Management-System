@@ -1,0 +1,23 @@
+<app-admin-head></app-admin-head>
+<div class="container">
+    <div class="form-group">
+        <h1>Add Student!!!</h1>
+        <form #updateForm='ngForm' (ngSubmit)="onSubmit(updateForm.value)">
+            <div class="form-group">
+                Book Id: {{bookId}}
+                <br>
+                No Of Books To Be Added:
+                <input required type="number" size="15" #noOfBooksToBeAddedRef='ngModel' name="noOfBooksToBeAdded" placeholder="Enter No Of Books to be added "
+                    class="form-control" ngModel>
+                <div *ngIf='noOfBooksToBeAddedRef.errors && noOfBooksToBeAddedRef.touched' class="alert alert-danger">
+                    <div [hidden]='!noOfBooksToBeAddedRef.errors.required'>
+                        please enter no Of books to be added
+                    </div>
+                </div>
+            </div>
+            <div >
+                <button type="submit" class="btn btn-primary">Update Book Count</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="sidenav">
+    <div class="registration-main-text">
+        <h2>Register</h2><br>
+    </div>
+</div>
+
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+
+        <div class="registration-form">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+                <div class="form-group">
+                    <b>Student Id:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <input required type="text" size="35" #idRef='ngModel' name="studentId" placeholder="Enter student id"
+                        class="form-control" ngModel>
+                    <div *ngIf='idRef.errors && idRef.touched' class="alert alert-danger">
+                        <div [hidden]='!idRef.errors.required'>
+                            please enter Id
+                        </div>
+                    </div>
+                </div>
+                <br>
+                
+                <div class="form-group">
+                    <b>Student Name:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <input required type="text" size="35" #nameRef='ngModel' name="name" placeholder="Enter student name"
+                        class="form-control" ngModel>
+                    <div *ngIf='nameRef.errors && nameRef.touched' class="alert alert-danger">
+                        <div [hidden]='!nameRef.errors.required'>
+                            please enter username
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <b>Student Email:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <input required type="text" size="35" pattern="^[A-Za-z0-9]{3,}[@].*([.com]|(.net)|.org|.edu|.yahoo)" #emailRef='ngModel' name="studentEmail" placeholder="Enter student email"
+                        class="form-control" ngModel>
+                    <div *ngIf='emailRef.errors && emailRef.touched' class="alert alert-danger">
+                        <div [hidden]='!emailRef.errors.required'>
+                            please enter email
+                        </div>
+                        Email format: abc@abc.abc
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <b>Password:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <input type="password" [(ngModel)]="userForm.password" name="password" placeholder="Password"
+                        class="form-control" required #password="ngModel"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                    <div *ngIf="password.invalid && (userForm.submitted || password.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="password.errors.required"> Password is required. </div>
+                        <div *ngIf="password.errors.pattern"> Must contain at least one number and one uppercase and
+                            lowercase letter, and at least 8 or more characters.</div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <b>Confirm Password:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <input type="password" [(ngModel)]="userForm.confirmpassword" name="confirmpassword"
+                        placeholder="Confirm Password" class="form-control" required #confirmpassword="ngModel"
+                        pattern="{{ password.value }}" />
+                    <div *ngIf=" confirmpassword.invalid && (userForm.submitted || confirmpassword.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
+                        <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <p
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                        {{message}}</p>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]='userForm.invalid' class="btn btn-success"
+                    style="color: black">Register</button>
+                    <div style="float:right;">
+                        <button class="btn btn-black" (click)="back()">Back</button>
+                    </div>
+            </form>
+        </div>

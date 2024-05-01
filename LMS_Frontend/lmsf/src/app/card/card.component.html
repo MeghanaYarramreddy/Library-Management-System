@@ -1,0 +1,35 @@
+<app-student-head></app-student-head>
+<div class="container">
+    <div>
+        <div>
+            <p style="text-align: left;font-family: 'Lucida Sans';"> Total Fine: {{totalFine}}</p>
+        </div>
+        <div class="card" *ngFor="let bookInfo of bookInfos ">
+            <img src="{{bookInfo.bookUrl}}" class="card" alt="Unable to load" height="200px" width="200px"> <br><br>
+            <b><i style="color:#fa07e6">Id:</i></b> {{bookInfo.bookId}} <br>
+            <div class="details">
+                <b><i style="color:#fa07e6">Issue Id:</i></b> {{bookInfo.issueId}} <br>
+                <b><i style="color:#fa07e6">Name:</i></b> {{bookInfo.bookName}} <br>
+                <b><i style="color:#fa07e6">Book Author:</i></b> {{bookInfo.bookAuthor}} <br>
+                <b><i style="color:#fa07e6">Rack Number:</i></b> {{bookInfo.rackNumber}} <br>
+                <b><i style="color:#fa07e6">Book Status:</i></b> {{bookInfo.status}} <br>
+                <div *ngIf="state(bookInfo.status)">
+                    <b><i style="color:#fa07e6">Issued Date:</i></b> {{bookInfo.issueDate}} <br>
+                    <b><i style="color:#fa07e6">Due date:</i></b> {{bookInfo.dueDate}} <br>
+                </div>
+                <div *ngIf="showReturnedDate(bookInfo.status)">
+                    <b><i style="color:#fa07e6">Returned Date:</i></b> {{bookInfo.returnDate}} <br>
+                    <b><i style="color:#fa07e6">Fine:</i></b> {{bookInfo.fine}} <br>
+                </div>
+                <div *ngIf="show(bookInfo.status)" >
+                    <button (click)="returnBook(bookInfo.issueId)" class="btn btn-primary">Return Book</button>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div>
+            <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                {{message}}</p>
+        </div>
+    </div>
+</div>

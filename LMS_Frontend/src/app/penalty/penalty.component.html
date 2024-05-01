@@ -1,0 +1,44 @@
+<app-admin-head></app-admin-head>
+<div class="col-lg-12 col-md-12" style="background-image: url(assets/images/1.jpg);
+    background-repeat:no-repeat;background-size:cover; padding-bottom: 500px;">
+    <div class="container" style="color: bisque; "> <br>
+        <h1><i class="fas fa-user-plus fa-2x"></i>Add Student!!!</h1> <br>
+        <form #studentForm='ngForm' (ngSubmit)="onSubmit(studentForm.value)">
+
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <!-- <div class="form-group" style="font-size: large;"> -->
+                    <i class="fas fa-id-badge fa-2x">&nbsp; </i> <b style="font-size: large;">Student Id:</b>
+                </div>
+                <div class=" col-lg-4">
+                    <input required type="text" size="15" #idRef='ngModel' name="id" placeholder="Enter Student Id "
+                        class="form-control" ngModel>
+
+                    <div *ngIf='idRef.errors && idRef.touched' class="alert alert-danger">
+                        <div [hidden]='!idRef.errors.required'>
+                            please enter Student Id
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+             <div>
+                    <p
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                        {{message}}</p>
+                </div>
+            <!-- <div >
+                <button type="submit" class="btn btn-primary">Calculate Fine</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+<div class="form-group row"> 
+    <div class="offset-lg-1 col-lg-6">
+        <button type="submit" class="btn btn-primary">Calculate Fine</button>
+    </div>
+</div>
+
+</form>
+</div>
+</div>

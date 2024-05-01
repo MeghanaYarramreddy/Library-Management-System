@@ -1,0 +1,23 @@
+<app-student-head></app-student-head>
+<div class="container">
+    <div>
+        <input type="text" [(ngModel)]='searchTerm' placeholder="Search for a book"/>
+        <div class="card" *ngFor="let book of books | search:searchTerm">
+            <img src="{{book.bookUrl}}" class="card" alt="Unable to load" height="200px" width="200px"> <br><br>
+            <b><i style="color:#fa07e6">Id:</i></b> {{book.bookId}} <br>
+            <div class="details">
+                <b><i style="color:#fa07e6">Name:</i></b> {{book.bookName}} <br>
+                <b><i style="color:#fa07e6">Book Author:</i></b> {{book.bookAuthor}} <br>
+                <b><i style="color:#fa07e6">Rack Number:</i></b> {{book.rackNumber}} <br>
+                <b><i style="color:#fa07e6">No of Books: </i></b> <b>₹</b> {{book.noOfBooks}} <br>
+                <br>
+                <button class="button" (click)="borrowBook(book.bookId)">Borrow Book</button>
+                <br>
+            </div>
+        </div>
+        <div>
+            <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                {{message}}</p>
+        </div>
+    </div>
+</div>

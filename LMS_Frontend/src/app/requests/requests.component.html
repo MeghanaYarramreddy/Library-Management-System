@@ -1,0 +1,24 @@
+<app-admin-head></app-admin-head>
+<div class="container">
+    <div>
+        <div class="card" *ngFor="let request of requests ">
+            <img src="{{request.bookUrl}}" class="card" alt="Unable to load" height="200px" width="200px"> <br><br>
+            <b><i style="color:#fa07e6">Id:</i></b> {{request.issueId}} <br>
+            <div class="details">
+                <b><i style="color:#fa07e6">Student Id:</i></b> {{request.studentId}} <br>
+                <b><i style="color:#fa07e6">Student Name:</i></b> {{request.studentName}} <br>
+                <b><i style="color:#fa07e6">Book Name:</i></b> {{request.bookName}} <br>
+                <b><i style="color:#fa07e6">Book Author:</i></b> {{request.bookAuthor}} <br>
+                <b><i style="color:#fa07e6">No of Books Available: </i></b>{{request.noOfBooksAvailable}} <br>
+                <button class="button" (click)="accept(request.issueId,request.studentId)">Accept</button>&nbsp;&nbsp;
+                <button class="button" (click)="decline(request.issueId,request.studentId)">Decline</button>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div>
+            <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                {{message}}</p>
+        </div>
+    </div>
+</div>

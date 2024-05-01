@@ -1,0 +1,40 @@
+<app-admin-head></app-admin-head>
+<div class="container">
+    <div>
+        <br/>
+       
+        <i class="fas fa-search fa-2x"></i>
+        <input type="text" [(ngModel)]='searchTerm' placeholder="Search for a book" />
+        <br/>
+        <br/>
+        <div *ngFor="let book of books | search:searchTerm" class="card" style="width: 30rem; border-color: black;">
+
+            <br>
+            <div align="center">
+            <img src="{{book.bookUrl}}" alt="Unable to load"style="text-align:center" height="200px" width="200px">
+            </div>
+            <div class="contain"> <br><br>
+                <b><i style="color:#fa07e6">Id:</i></b> {{book.bookId}} <br>
+                <div class="details">
+                    <b><i style="color:#fa07e6">Name:</i></b> {{book.bookName}} <br>
+                    <b><i style="color:#fa07e6">Book Author:</i></b> {{book.bookAuthor}} <br>
+                    <b><i style="color:#fa07e6">Rack Number:</i></b> {{book.rackNumber}} <br>
+                    <b><i style="color:#fa07e6">No of Books: </i></b>{{book.noOfBooks}} <br>
+                    <button class="button" (click)="delete(book.bookId)">Delete</button>&nbsp;&nbsp;
+                    <button class="button" (click)="update(book.bookId)">Update Book Count</button>
+                    <br/>
+                    <br/>
+                </div>
+             
+            </div>
+            <br/>
+            
+        </div>
+        <br> <br/>
+        <div>
+            <p
+                style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;color: red">
+                {{message}}</p>
+        </div>
+    </div>
+</div>
